@@ -1,0 +1,10 @@
+# robots.txt for naer-tw.github.io
+# 允許所有搜尋引擎爬取所有頁面
+
+User-agent: *
+Allow: /
+
+# Sitemap 位置 — 讓搜尋引擎自動發現 sitemap
+Sitemap: https://naer-tw.github.io/policy/sitemap.xml
+Sitemap: https://naer-tw.github.io/naer-quiz/sitemap.xml
+Sitemap: https://naer-tw.github.io/t-ntdc/sitemap.xml
