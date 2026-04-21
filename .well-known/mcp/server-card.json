@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/server-card.schema.json",
+  "serverInfo": {
+    "name": "naer-policy-hub",
+    "version": "1.0.0",
+    "title": "國教行動聯盟政策知識庫 MCP Server",
+    "description": "Exposes NAER's policy briefs and advocacy database as MCP resources for AI agents. Read-only static content server backed by GitHub Pages.",
+    "vendor": {
+      "name": "國教行動聯盟 (NAER)",
+      "url": "https://naer-tw.github.io/",
+      "contact": "https://www.facebook.com/twedumove/"
+    }
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://naer-tw.github.io/.well-known/mcp/endpoint",
+    "note": "Static MCP-over-HTTP. All resources are content-addressed via URL."
+  },
+  "capabilities": {
+    "resources": {
+      "listChanged": false,
+      "subscribe": false,
+      "list": [
+        {
+          "uri": "https://naer-tw.github.io/policy/llms.txt",
+          "name": "policy-knowledge-hub-index",
+          "description": "Index of all 25 policy deep-dive briefs",
+          "mimeType": "text/markdown"
+        },
+        {
+          "uri": "https://naer-tw.github.io/advocacy-database/llms.txt",
+          "name": "advocacy-database-summary",
+          "description": "2023-2025 advocacy outcomes summary",
+          "mimeType": "text/markdown"
+        },
+        {
+          "uri": "https://naer-tw.github.io/advocacy-database/knowledge-base/press-v2/data.json",
+          "name": "advocacy-press-dataset",
+          "description": "113 press releases dataset (JSON)",
+          "mimeType": "application/json"
+        },
+        {
+          "uri": "https://naer-tw.github.io/advocacy-database/advocacy-summary.md",
+          "name": "advocacy-summary",
+          "description": "Comprehensive advocacy outcomes in Markdown",
+          "mimeType": "text/markdown"
+        }
+      ]
+    },
+    "tools": {
+      "listChanged": false,
+      "list": []
+    },
+    "prompts": {
+      "listChanged": false,
+      "list": [
+        {
+          "name": "naer-position-on",
+          "description": "Summarize NAER's official position on a policy topic with citations",
+          "arguments": [
+            { "name": "topic", "description": "Policy topic (e.g., '轉介教育', '校事會議')", "required": true }
+          ]
+        }
+      ]
+    }
+  },
+  "instructions": "Read-only MCP server exposing NAER's policy knowledge hub. Attribution required per CC-BY-4.0: cite as '國教行動聯盟 (NAER) — https://naer-tw.github.io/'.",
+  "_meta": {
+    "static_hosting": true,
+    "interactive_tools": false,
+    "license": "CC-BY-4.0",
+    "last_updated": "2026-04-19"
+  }
+}

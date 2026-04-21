@@ -1,0 +1,9 @@
+Contact: https://www.facebook.com/twedumove/
+Preferred-Languages: zh-TW, en
+Canonical: https://naer-tw.github.io/.well-known/security.txt
+Expires: 2027-04-19T00:00:00.000Z
+Policy: https://naer-tw.github.io/
+
+# 國教行動聯盟 (naer-tw) 安全通報
+# 若您發現任何安全問題（XSS、資料外洩、內容完整性等），請透過上方 Facebook 私訊聯繫。
+# 本組織所有 GitHub Pages 子站皆歡迎安全研究員通報。

@@ -1,0 +1,63 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://naer-tw.github.io/policy/",
+      "service-doc": [
+        {
+          "href": "https://naer-tw.github.io/policy/llms.txt",
+          "type": "text/markdown",
+          "title": "Policy Knowledge Hub — Index (llms.txt)"
+        }
+      ],
+      "item": [
+        {
+          "href": "https://naer-tw.github.io/policy/sitemap.xml",
+          "type": "application/xml",
+          "title": "Sitemap of all policy briefs"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://naer-tw.github.io/policy/humans.txt",
+          "type": "text/plain",
+          "title": "Policy Hub editorial team"
+        }
+      ]
+    },
+    {
+      "anchor": "https://naer-tw.github.io/advocacy-database/",
+      "service-doc": [
+        {
+          "href": "https://naer-tw.github.io/advocacy-database/llms.txt",
+          "type": "text/markdown",
+          "title": "Advocacy Database — Index (llms.txt)"
+        }
+      ],
+      "item": [
+        {
+          "href": "https://naer-tw.github.io/advocacy-database/knowledge-base/press-v2/data.json",
+          "type": "application/json",
+          "title": "Press Releases Dataset (2023-2025, 113 items)"
+        },
+        {
+          "href": "https://naer-tw.github.io/advocacy-database/advocacy-summary.md",
+          "type": "text/markdown",
+          "title": "Advocacy Summary Markdown"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://naer-tw.github.io/advocacy-database/humans.txt",
+          "type": "text/plain",
+          "title": "Advocacy Database team"
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "spec": "RFC 9727 (application/linkset+json)",
+    "generated": "2026-04-19",
+    "publisher": "國教行動聯盟 (NAER)",
+    "license": "CC-BY-4.0"
+  }
+}

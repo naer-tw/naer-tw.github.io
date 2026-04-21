@@ -1,10 +1,118 @@
-# robots.txt for naer-tw.github.io
-# 允許所有搜尋引擎爬取所有頁面
+# ═════════════════════════════════════════════════════════
+# robots.txt — 國教行動聯盟 (naer-tw.github.io)
+# Organization-level. Serves policy/, advocacy-database/ + others.
+# ═════════════════════════════════════════════════════════
 
+# ─── Content Signals (contentsignals.org / IETF draft-romm-aipref) ───
+# 教育政策論述內容：允許 AI 搜尋與引用，不允許 AI 訓練（保留原創作者標示權）
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+# ═══ AI Search & Reasoning Bots ═══
+
+# OpenAI ChatGPT / SearchGPT
+User-agent: GPTBot
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI (Gemini / AI Overview)
+User-agent: Google-Extended
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft Bing / Copilot
+User-agent: BingPreview
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# ByteDance / Doubao
+User-agent: Bytespider
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Amazonbot (Alexa+)
+User-agent: Amazonbot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckAssistBot
+Allow: /
+
+# ═══ Traditional Search Engines ═══
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ═══ Default ═══
 User-agent: *
 Allow: /
 
-# Sitemap 位置 — 讓搜尋引擎自動發現 sitemap
+# ═══ Content Discovery ═══
+Sitemap: https://naer-tw.github.io/sitemap.xml
 Sitemap: https://naer-tw.github.io/policy/sitemap.xml
+Sitemap: https://naer-tw.github.io/advocacy-database/sitemap.xml
 Sitemap: https://naer-tw.github.io/naer-quiz/sitemap.xml
 Sitemap: https://naer-tw.github.io/t-ntdc/sitemap.xml
+
+# ═══ Agent Discovery ═══
+# llms.txt:           https://naer-tw.github.io/llms.txt
+# humans.txt:         https://naer-tw.github.io/humans.txt
+# security.txt:       https://naer-tw.github.io/.well-known/security.txt
+# agent-skills:       https://naer-tw.github.io/.well-known/agent-skills/index.json
+# mcp-server-card:    https://naer-tw.github.io/.well-known/mcp/server-card.json
+# api-catalog:        https://naer-tw.github.io/.well-known/api-catalog

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://agentskills.io/schemas/agent-skills-discovery-v0.2.0.json",
+  "version": "0.2.0",
+  "publisher": {
+    "name": "國教行動聯盟",
+    "url": "https://naer-tw.github.io/",
+    "contact": "https://www.facebook.com/twedumove/"
+  },
+  "skills": [
+    {
+      "name": "get-policy-brief",
+      "type": "document-retrieval",
+      "description": "Fetch a policy deep-dive brief (25 available) from NAER's policy knowledge hub. Returns full Markdown with front-matter, FAQ, and sources. Topics: campus safety, child protection, education reform, school lunch, teacher affairs.",
+      "url": "https://naer-tw.github.io/policy/llms.txt",
+      "input": {
+        "topic": "string (one of: campus-safety | child-rights | child-health | education-reform | school-lunch | teacher-affairs | health | youth-health)",
+        "slug": "string (article slug, optional)"
+      },
+      "output": {
+        "content_type": "text/markdown",
+        "license": "CC-BY-4.0"
+      }
+    },
+    {
+      "name": "list-advocacy-data",
+      "type": "dataset-query",
+      "description": "Query NAER's advocacy outcomes database (2023-2025): 113 press releases, 286 events, 7,917+ media mentions, 168+ partner organizations. Filter by year, topic, or stakeholder.",
+      "url": "https://naer-tw.github.io/advocacy-database/llms.txt",
+      "input": {
+        "year": "2023 | 2024 | 2025 | all",
+        "topic": "string (optional)",
+        "type": "press | event | partner (optional)"
+      },
+      "output": {
+        "content_type": "application/json",
+        "data_url": "https://naer-tw.github.io/advocacy-database/knowledge-base/press-v2/data.json",
+        "license": "CC-BY-4.0"
+      }
+    },
+    {
+      "name": "summarize-organization",
+      "type": "profile-retrieval",
+      "description": "Get NAER's organizational profile: mission, founding year (2012), topic coverage, partners, and recent advocacy positions.",
+      "url": "https://naer-tw.github.io/llms.txt",
+      "output": {
+        "content_type": "text/markdown"
+      }
+    }
+  ],
+  "cache_policy": {
+    "ttl_seconds": 3600,
+    "hint": "Content is updated weekly; safe to cache 1 hour."
+  },
+  "attribution_required": true,
+  "attribution_format": "國教行動聯盟 (NAER, 2012-)：https://naer-tw.github.io/"
+}

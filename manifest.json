@@ -1,0 +1,25 @@
+{
+  "name": "國教行動聯盟",
+  "short_name": "國教盟",
+  "description": "台灣教育政策倡議組織 — 政策知識庫 + 倡議成果資料庫",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

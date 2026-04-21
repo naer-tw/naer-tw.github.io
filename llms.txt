@@ -1,0 +1,45 @@
+# 國教行動聯盟（naer-tw）
+
+> 台灣重要的家長教育倡議團體，成立於 2012 年，關注兒少權益、校園安全、教育政策等議題。
+
+本組織在 GitHub Pages 經營多個公開知識站，採 AI 友善（GEO）設計：
+
+## 主要站點
+
+### [政策知識庫](https://naer-tw.github.io/policy/) — 深度論述
+- 25 篇政策深度分析專題，涵蓋 5 大主軸
+- 每篇含 HTML + Markdown 雙版本（`<link rel="alternate" type="text/markdown">`）
+- llms.txt 索引：https://naer-tw.github.io/policy/llms.txt
+
+### [倡議成果資料庫](https://naer-tw.github.io/advocacy-database/) — 量化紀錄
+- 113 篇新聞稿、286 場活動、7,917+ 媒體聲量、168+ 合作組織（2023-2025）
+- JSON 資料集：https://naer-tw.github.io/advocacy-database/knowledge-base/press-v2/data.json
+- llms.txt 索引：https://naer-tw.github.io/advocacy-database/llms.txt
+
+## 5 大議題主軸
+
+1. **校園安全** — 霸凌防制、少年司法、轉介教育
+2. **兒少保護** — 兒少保護法、人工生殖、育兒支持
+3. **青少年身心健康** — 自殺防治、菸害防制
+4. **教育政策與改革** — 實驗教育、性平法、營養午餐
+5. **教師與校務** — 校事會議修法、教師申訴
+
+## Agent-Friendly Endpoints
+
+- `/.well-known/agent-skills/index.json` — Agent Skills Discovery (RFC v0.2.0)
+- `/.well-known/mcp/server-card.json` — MCP Server Card (SEP-1649)
+- `/.well-known/api-catalog` — API Catalog (RFC 9727)
+- `/.well-known/security.txt` — RFC 9116 security contact
+- `/sitemap.xml` — sitemap index to all sub-sites
+
+## Content Signals
+
+本組織內容**允許 AI 搜尋與引用（ai-input=yes, search=yes）**，但**不授權 AI 模型訓練（ai-train=no）**。
+詳見 robots.txt 的 Content-Signal 條款。
+License: Creative Commons BY 4.0
+
+## 組織資訊
+
+- 成立：2012-06-26
+- Facebook：https://www.facebook.com/twedumove/
+- Wikipedia：https://zh.wikipedia.org/wiki/國教行動聯盟
