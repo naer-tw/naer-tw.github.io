@@ -307,58 +307,83 @@
 
   <!-- WebMCP: Expose site tools to browser-based AI agents -->
   <!-- Spec: https://webmachinelearning.github.io/webmcp/ -->
+  <!-- Also declared in .well-known/agent-skills/index.json for static discovery -->
   <script>
-    (function () {
-      if (!('modelContext' in navigator) || !navigator.modelContext || typeof navigator.modelContext.provideContext !== 'function') {
-        return;
+    // WebMCP tool definitions (also accessible via window.__webmcp_tools for scanners)
+    window.__webmcp_tools = [
+      {
+        name: 'open-policy-hub',
+        description: 'Open the NAER policy knowledge hub (26 policy deep-dive briefs covering campus safety, child protection, education reform, school lunch, teacher affairs).',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        execute: function () {
+          window.location.href = '/policy/';
+          return { ok: true, destination: '/policy/' };
+        }
+      },
+      {
+        name: 'open-advocacy-database',
+        description: 'Open the NAER advocacy outcomes database (2023-2025: 113 press releases, 286 events, 7,917+ media mentions, 168+ partners).',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        execute: function () {
+          window.location.href = '/advocacy-database/';
+          return { ok: true, destination: '/advocacy-database/' };
+        }
+      },
+      {
+        name: 'get-llms-overview',
+        description: "Return the organization's llms.txt summary — a Markdown index of all available resources and endpoints.",
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        execute: async function () {
+          var r = await fetch('/llms.txt');
+          var text = await r.text();
+          return { content_type: 'text/markdown', body: text };
+        }
+      },
+      {
+        name: 'get-advocacy-summary',
+        description: 'Return the advocacy outcomes comprehensive summary in Markdown (key metrics, yearly breakdown, issue distribution, partner network).',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        execute: async function () {
+          var r = await fetch('/advocacy-database/advocacy-summary.md');
+          var text = await r.text();
+          return { content_type: 'text/markdown', body: text };
+        }
+      },
+      {
+        name: 'search-policy-topics',
+        description: 'Search the 26 policy briefs by topic keyword (returns matching article URLs and summaries).',
+        inputSchema: {
+          type: 'object',
+          properties: { query: { type: 'string', description: '政策關鍵字（如「兒少權法」、「校園霸凌」、「性平法」）' } },
+          required: ['query'],
+          additionalProperties: false
+        },
+        execute: async function (args) {
+          var r = await fetch('/policy/llms.txt');
+          var text = await r.text();
+          var lines = text.split('\n').filter(function(l){ return l.indexOf(args.query) !== -1; });
+          return { matches: lines, count: lines.length };
+        }
       }
+    ];
+
+    // Register with WebMCP if available (runs at page load)
+    // Call provideContext() unconditionally so scanners that inject polyfills can detect
+    (function registerWebMCPTools() {
       try {
-        navigator.modelContext.provideContext({
-          tools: [
-            {
-              name: 'open-policy-hub',
-              description: 'Open the NAER policy knowledge hub (25 policy deep-dive briefs covering campus safety, child protection, education reform, school lunch, teacher affairs).',
-              inputSchema: { type: 'object', properties: {}, additionalProperties: false },
-              execute: function () {
-                window.location.href = '/policy/';
-                return { ok: true, destination: '/policy/' };
-              }
-            },
-            {
-              name: 'open-advocacy-database',
-              description: 'Open the NAER advocacy outcomes database (2023-2025: 113 press releases, 286 events, 7,917+ media mentions, 168+ partners).',
-              inputSchema: { type: 'object', properties: {}, additionalProperties: false },
-              execute: function () {
-                window.location.href = '/advocacy-database/';
-                return { ok: true, destination: '/advocacy-database/' };
-              }
-            },
-            {
-              name: 'get-llms-overview',
-              description: "Return the organization's llms.txt summary — a Markdown index of all available resources and endpoints.",
-              inputSchema: { type: 'object', properties: {}, additionalProperties: false },
-              execute: async function () {
-                const r = await fetch('/llms.txt');
-                const text = await r.text();
-                return { content_type: 'text/markdown', body: text };
-              }
-            },
-            {
-              name: 'get-advocacy-summary',
-              description: 'Return the advocacy outcomes comprehensive summary in Markdown (key metrics, yearly breakdown, issue distribution, partner network).',
-              inputSchema: { type: 'object', properties: {}, additionalProperties: false },
-              execute: async function () {
-                const r = await fetch('/advocacy-database/advocacy-summary.md');
-                const text = await r.text();
-                return { content_type: 'text/markdown', body: text };
-              }
-            }
-          ]
-        });
+        navigator.modelContext.provideContext({ tools: window.__webmcp_tools });
+        console.log('[WebMCP] Registered ' + window.__webmcp_tools.length + ' tools');
       } catch (e) {
-        // Silently fail — WebMCP is optional enhancement
+        // navigator.modelContext not available — static content site, tools still declared in agent-skills
       }
     })();
+
+    // Re-register on visibility change (some browsers lazy-init modelContext)
+    if (typeof document !== 'undefined' && document.addEventListener) {
+      document.addEventListener('DOMContentLoaded', function () {
+        try { navigator.modelContext.provideContext({ tools: window.__webmcp_tools }); } catch (e) {}
+      });
+    }
   </script>
 </body>
 </html>
