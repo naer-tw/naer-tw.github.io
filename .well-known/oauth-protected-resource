@@ -1,0 +1,19 @@
+{
+  "resource": "https://naer-tw.github.io",
+  "authorization_servers": [],
+  "scopes_supported": [],
+  "bearer_methods_supported": [],
+  "resource_name": "國教行動聯盟公開知識站",
+  "resource_documentation": "https://naer-tw.github.io/llms.txt",
+  "resource_policy_uri": "https://naer-tw.github.io/humans.txt",
+  "resource_tos_uri": "https://creativecommons.org/licenses/by/4.0/",
+  "tls_client_certificate_bound_access_tokens": false,
+  "_meta": {
+    "spec": "RFC 9728 (OAuth Protected Resource Metadata)",
+    "access_model": "public-read",
+    "authentication_required": false,
+    "license": "CC-BY-4.0",
+    "_note": "本資源為公開教育政策內容，採 CC-BY-4.0 授權，AI agent 與人類訪客皆無需認證即可存取。authorization_servers 刻意留空表示 no-auth-required。若未來加入受保護 API，此檔會更新。",
+    "_note_en": "This resource is publicly accessible. No authentication required for read access. Empty authorization_servers array explicitly signals no-auth model. Content licensed under CC-BY-4.0 with attribution requirement."
+  }
+}

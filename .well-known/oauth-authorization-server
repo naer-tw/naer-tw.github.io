@@ -1,0 +1,24 @@
+{
+  "issuer": "https://naer-tw.github.io",
+  "authorization_endpoint": "https://naer-tw.github.io/.well-known/oauth-not-configured",
+  "token_endpoint": "https://naer-tw.github.io/.well-known/oauth-not-configured",
+  "response_types_supported": ["code"],
+  "grant_types_supported": [],
+  "scopes_supported": [],
+  "token_endpoint_auth_methods_supported": ["none"],
+  "code_challenge_methods_supported": ["S256"],
+  "service_documentation": "https://naer-tw.github.io/llms.txt",
+  "op_policy_uri": "https://naer-tw.github.io/humans.txt",
+  "op_tos_uri": "https://creativecommons.org/licenses/by/4.0/",
+  "_meta": {
+    "spec": "RFC 8414 (OAuth 2.0 Authorization Server Metadata)",
+    "server_role": "not-configured",
+    "_note": "本站非 OAuth 授權伺服器。所有資源皆公開可讀（參見 /.well-known/oauth-protected-resource）。此檔存在是為了明確告知 agent：此 domain 沒有 OAuth server，無需嘗試認證流程。",
+    "_note_en": "This site does NOT operate an OAuth/OIDC authorization server. All content is publicly accessible; see /.well-known/oauth-protected-resource for public-read declaration. This metadata is published as an explicit 'no-auth-server' signal so agents do not waste cycles attempting authentication.",
+    "related": {
+      "protected_resource": "https://naer-tw.github.io/.well-known/oauth-protected-resource",
+      "mcp_server_card": "https://naer-tw.github.io/.well-known/mcp/server-card.json",
+      "agent_skills": "https://naer-tw.github.io/.well-known/agent-skills/index.json"
+    }
+  }
+}
